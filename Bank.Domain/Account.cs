@@ -29,12 +29,12 @@ namespace Bank.Domain
             ApplyEvent(new AccountCreated(Id, AccountOwner.Id, Currency);
         } 
 
-        public void Credit(long amount)
+        public void Credit(double amount)
         {
             ApplyEvent(new AccountCreated(Id, amount));
         }
 
-        public void Debit(long amount)
+        public void Debit(double amount)
         {
             ApplyEvent(new AccountDebited(Id, amount));
         }

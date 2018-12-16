@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "External.Currency.Api", "Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Host.Currencies", "Bank.Host.Currencies\Bank.Host.Currencies.csproj", "{E0CB8632-E642-4034-9B8B-5AFE75B8423A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Web", "Bank.Web\Bank.Web.csproj", "{6C67E37E-B7B3-4F57-AA4A-35AB926795D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{E0CB8632-E642-4034-9B8B-5AFE75B8423A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0CB8632-E642-4034-9B8B-5AFE75B8423A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0CB8632-E642-4034-9B8B-5AFE75B8423A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C67E37E-B7B3-4F57-AA4A-35AB926795D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C67E37E-B7B3-4F57-AA4A-35AB926795D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C67E37E-B7B3-4F57-AA4A-35AB926795D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C67E37E-B7B3-4F57-AA4A-35AB926795D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

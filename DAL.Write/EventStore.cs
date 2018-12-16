@@ -20,7 +20,7 @@ namespace DAL.Write
         {
             using (var session = store.OpenSession())
             {
-                return session.Query<Event>()
+                return session.Query<Event>().Where(e => e.)
             }
         }
 

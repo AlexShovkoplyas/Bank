@@ -6,6 +6,7 @@ namespace Bank.Core.Domain
 {
     public class Event
     {
+        public string Id;
         public int Version;
     }
 }
