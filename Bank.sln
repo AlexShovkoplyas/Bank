@@ -11,19 +11,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Infrustructure", "Bank
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.EventStore", "Bank.EventStore\Bank.EventStore.csproj", "{AD6469DD-9EFA-423F-86DC-E21CF832B6AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Api", "Bank.Api\Bank.Api.csproj", "{8443A380-8677-43E7-BCE0-467CBA83342B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Api", "Bank.Api\Bank.Api.csproj", "{8443A380-8677-43E7-BCE0-467CBA83342B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Host.Consumer", "Bank.Host.Consumer\Bank.Host.Consumer.csproj", "{C27F34CA-AAF5-45E7-B013-B6AC05210CCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Host.Consumer", "Bank.Host.Consumer\Bank.Host.Consumer.csproj", "{C27F34CA-AAF5-45E7-B013-B6AC05210CCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Consumers", "CommandHandlers\Bank.Consumers.csproj", "{E11B35AE-929D-4250-9922-0A37C68D2AB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Consumers", "CommandHandlers\Bank.Consumers.csproj", "{E11B35AE-929D-4250-9922-0A37C68D2AB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL.Write", "DAL.Write\DAL.Write.csproj", "{0D518840-B9C9-4276-B225-6764D8723996}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL.Write", "DAL.Write\DAL.Write.csproj", "{0D518840-B9C9-4276-B225-6764D8723996}"
 	ProjectSection(ProjectDependencies) = postProject
 		{1CDF07A4-4F73-4281-89AD-683984DF355F} = {1CDF07A4-4F73-4281-89AD-683984DF355F}
 		{ED96AEEE-EB11-4AEE-A7A8-145C00285C15} = {ED96AEEE-EB11-4AEE-A7A8-145C00285C15}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL.Read", "DAL.Read\DAL.Read.csproj", "{91C4AC1B-3449-4352-BA20-2900FF060FD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL.Read", "DAL.Read\DAL.Read.csproj", "{91C4AC1B-3449-4352-BA20-2900FF060FD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "External.Currency.Api", "External.Currency.Api\External.Currency.Api.csproj", "{B279E985-314D-4DB6-96D2-BE0D0263C647}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Host.Currencies", "Bank.Host.Currencies\Bank.Host.Currencies.csproj", "{E0CB8632-E642-4034-9B8B-5AFE75B8423A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +71,14 @@ Global
 		{91C4AC1B-3449-4352-BA20-2900FF060FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91C4AC1B-3449-4352-BA20-2900FF060FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91C4AC1B-3449-4352-BA20-2900FF060FD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B279E985-314D-4DB6-96D2-BE0D0263C647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B279E985-314D-4DB6-96D2-BE0D0263C647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B279E985-314D-4DB6-96D2-BE0D0263C647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B279E985-314D-4DB6-96D2-BE0D0263C647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0CB8632-E642-4034-9B8B-5AFE75B8423A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0CB8632-E642-4034-9B8B-5AFE75B8423A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0CB8632-E642-4034-9B8B-5AFE75B8423A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0CB8632-E642-4034-9B8B-5AFE75B8423A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
