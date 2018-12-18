@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Write
 {
-    class Repository : IRepository
+    class RepositoryRavenDb : IRepository
     {
         private readonly IDocumentStore store;
 

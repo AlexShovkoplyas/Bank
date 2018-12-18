@@ -7,8 +7,8 @@ namespace Bank.Core.Commands
 {
     public interface CreateAccount
     {
-        Guid Id { get; }
-        int PersonId { get; }
-        Currency Currency { get; }
+        Guid Id { get; set; }
+        int PersonId { get; set; }
+        Currency Currency { get; set; }
     }
 }

@@ -19,9 +19,15 @@ namespace Bank.Infrustructure
             messageBus.Start();
         }
 
-        public Task SendAsync<TMessage>(TMessage message) where TMessage : class
+        public Task PublishAsync<TMessage>(TMessage message) where TMessage : class
         {
             messageBus.Publish(message);
+            return Task.CompletedTask;
+        }
+
+        public Task SendAsync<TMessage>(TMessage message) where TMessage : class
+        {
+            messageBus.Send(message);
             return Task.CompletedTask;
         }
 
