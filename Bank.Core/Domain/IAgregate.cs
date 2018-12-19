@@ -10,7 +10,8 @@ namespace Bank.Core.Domain
         int Version { get; }
         string Identifier { get; }
         void ApplyEvent(Event @event);
-        ICollection<object> GetPendingEvents();
+        ICollection<Event> GetPendingEvents();
         void ClearPendingEvents();
+        void LoadsFromHistory(IEnumerable<Event> history);
     }
 }

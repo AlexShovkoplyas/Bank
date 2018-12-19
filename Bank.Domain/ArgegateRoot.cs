@@ -11,16 +11,16 @@ namespace Bank.Domain
         
         public Guid Id { get; internal set; }              
         public string Identifier => $"{CollectionName}/{Id}";
-        public int Version { get; internal set; }
+        public int Version { get; internal set; } = -1;
 
         private readonly List<Event> changes = new List<Event>();
 
-        public IEnumerable<Event> GetUncommittedChanges()
+        public ICollection<Event> GetPendingEvents()
         {
             return changes;
         }
 
-        public void MarkChangesAsCommitted()
+        public void ClearPendingEvents()
         {
             changes.Clear();
         }
@@ -30,22 +30,10 @@ namespace Bank.Domain
             foreach (var e in history) ((IAgregate)this).ApplyEvent(e);
         }
 
-        void IAgregate.ApplyEvent(Event @event)
+        public void ApplyEvent(Event @event)
         {
-            ((dynamic)this).Apply(@event);
+            ((dynamic)this).Apply((dynamic)@event);
             Version++;
         }
-
-        public ICollection<object> GetPendingEvents()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ClearPendingEvents()
-        {
-            throw new NotImplementedException();
-        }
-
-
     }
 }
