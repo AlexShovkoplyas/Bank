@@ -25,11 +25,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL.Write", "DAL.Write\DAL.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL.Read", "DAL.Read\DAL.Read.csproj", "{91C4AC1B-3449-4352-BA20-2900FF060FD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "External.Currency.Api", "External.Currency.Api\External.Currency.Api.csproj", "{B279E985-314D-4DB6-96D2-BE0D0263C647}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "External.Currency.Api", "External.Currency.Api\External.Currency.Api.csproj", "{B279E985-314D-4DB6-96D2-BE0D0263C647}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Host.Currencies", "Bank.Host.Currencies\Bank.Host.Currencies.csproj", "{E0CB8632-E642-4034-9B8B-5AFE75B8423A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Host.Currencies", "Bank.Host.Currencies\Bank.Host.Currencies.csproj", "{E0CB8632-E642-4034-9B8B-5AFE75B8423A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Web", "Bank.Web\Bank.Web.csproj", "{6C67E37E-B7B3-4F57-AA4A-35AB926795D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Web", "Bank.Web\Bank.Web.csproj", "{6C67E37E-B7B3-4F57-AA4A-35AB926795D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.IdentityServer", "Bank.IdentityServer\Bank.IdentityServer.csproj", "{A42F1529-6C2D-4898-8A1A-D3337FA22D9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,10 @@ Global
 		{6C67E37E-B7B3-4F57-AA4A-35AB926795D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C67E37E-B7B3-4F57-AA4A-35AB926795D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C67E37E-B7B3-4F57-AA4A-35AB926795D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A42F1529-6C2D-4898-8A1A-D3337FA22D9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A42F1529-6C2D-4898-8A1A-D3337FA22D9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A42F1529-6C2D-4898-8A1A-D3337FA22D9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A42F1529-6C2D-4898-8A1A-D3337FA22D9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
