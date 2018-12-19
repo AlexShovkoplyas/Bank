@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bank.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Bank.Api.Controllers.AccountsController.CreateAccount(System.String,System.Int32)">
+            <summary>
+            SUMMARY INFORMATION!
+            </summary>
+            <remarks>
+            REMARKS are awesome because they become implementation notes!
+                
+                {
+                    "WithSome": "Tab support for code blocks!"
+                }
+            
+            Documentation power at your fingertips!
+            </remarks>
+        </member>
+        <member name="M:Bank.Api.Controllers.AccountsController.SayHello">
+            <summary>
+            Test endpoint
+            </summary>
+        </member>
+    </members>
+</doc>
