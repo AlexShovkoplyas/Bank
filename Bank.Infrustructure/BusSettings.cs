@@ -9,7 +9,7 @@ namespace Bank.Infrustructure
         public Uri HostAddress { get; }
         public string Username { get; }
         public string Password { get; }
-        public string ReceiveQueueName { get; }
-        public string[] SendEndpoints { get; }
+        //public string ReceiveQueueName { get; }
+        //public string[] SendEndpoints { get; }
     }
 }

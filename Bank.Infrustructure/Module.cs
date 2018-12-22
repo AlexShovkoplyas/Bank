@@ -23,21 +23,28 @@ namespace Bank.Infrustructure
                         h.Password(busSettings.Password);
                     });
 
-                    if (busSettings.ReceiveQueueName != null)
-                    {
-                        cfg.ReceiveEndpoint(busSettings.ReceiveQueueName, ec =>
-                        {
-                            ec.LoadFrom(context);
-                        });
-                    }                    
+                    //if (busSettings.ReceiveQueueName != null)
+                    //{
+                    //    cfg.ReceiveEndpoint(busSettings.ReceiveQueueName, ec =>
+                    //    {
+                    //        ec.LoadFrom(context);
+                    //    });
+                    //}        
+                    cfg.Consumer<UpdateCustomerConsumer>(context);
                 });
 
+                
+
+                busControl.Start();
+
+                busControl.
                 return busControl;
             })
             .As<IBusControl>();
 
-
             builder.RegisterType<MessageBus>().SingleInstance().As<IMessageBus>();
+            builder.RegisterType<CommandBus>().SingleInstance().As<ICommandBus>();
+            builder.RegisterType<CommandBusesFactory>().SingleInstance().As<CommandBusesFactory>();
         }
     }
 }

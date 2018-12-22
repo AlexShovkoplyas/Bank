@@ -9,28 +9,12 @@ namespace Bank.Infrustructure
 {
     class MessageBus : IMessageBus
     {
-        private readonly BusSettings busSettings;
         private readonly IBusControl messageBus;
 
-        public Dictionary<string, ISendEndpoint> Endpoints = new Dictionary<string, ISendEndpoint>();
-
-        public MessageBus(BusSettings busSettings, IBusControl messageBus)
+        public MessageBus(IBusControl messageBus)
         {
-            this.busSettings = busSettings;
             this.messageBus = messageBus;            
-        }
-
-        public async Task Initialize()
-        {
-            foreach (var sendEndpoint in busSettings.SendEndpoints)
-            {
-                Endpoints.Add(
-                    sendEndpoint.Replace("rabbitmq://", ""),
-                    await messageBus.GetSendEndpoint(new Uri(sendEndpoint)));
-            }
-
-            await messageBus.StartAsync();
-        } 
+        }        
 
         public Task PublishAsync<TMessage>(TMessage message) where TMessage : class
         {
