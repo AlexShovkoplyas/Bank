@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Bank.Core.Commands;
-using Bank.Core.Transporting;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bank.Api.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    
     public class AccountsController : Controller
     {
-        private readonly IMessageBus bus;
+        //private readonly IMessageBus bus;
+        private readonly IPrinter printer;
 
-        public AccountsController(IMessageBus bus)
+        public AccountsController(IPrinter printer)
         {
-            this.bus = bus;
+            this.printer = printer;
+            //this.bus = bus;
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Bank.Api.Controllers
         /// </remarks>
         [HttpPost]
         [Route("/create")]
-        public async Task CreateAccount(string currency, int personId)
+        public void CreateAccount(string currency, int personId)
         {
             //bus.SendAsync<CreateAccount>(new 
             //{
@@ -44,13 +44,24 @@ namespace Bank.Api.Controllers
         }
 
         /// <summary>
-        /// Test endpoint
+        /// With Authorization
         /// </summary>
         [HttpGet]
-        [Route("/test")]
+        [Authorize]
+        [Route("test")]
         public string SayHello()
         {
-            return "Hello world!!!";
+            return printer.Print("Hello world!!!");
+        }
+
+        /// <summary>
+        /// Without Authorization
+        /// </summary>
+        [HttpGet]
+        [Route("test2")]
+        public string SayHello2()
+        {
+            return "Hello world!!! 2";
         }
     }
 }

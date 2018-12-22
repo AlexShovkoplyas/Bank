@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+using Bank.Infrustructure;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -22,19 +24,19 @@ namespace Bank.Api
     public class Startup
     {
         private const string SwaggerXmlFileName = "Bank.Api.xml";
+        private readonly AppSettings appSettings;
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            appSettings = Configuration.GetSection("AppSettings").Get<AppSettings>();
         }
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie()
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(c =>
                 {
                     c.Authority = "http://localhost:5000";
@@ -44,15 +46,12 @@ namespace Bank.Api
 
             services.AddSwaggerGen(c =>
             {
-                string filePath = Path.Combine(
-                    PlatformServices.Default.Application.ApplicationBasePath,
-                    SwaggerXmlFileName);
+                string filePath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, SwaggerXmlFileName);
                 c.IncludeXmlComments(filePath);
-                //c.EnableAnnotations();
+                c.EnableAnnotations();
 
                 c.SwaggerDoc("v1", new Info { Title = "API", Version = "v1" });
 
-                // Handle OAuth
                 c.AddSecurityDefinition("oauth2", new OAuth2Scheme
                 {
                     Type = "oauth2",
@@ -71,16 +70,22 @@ namespace Bank.Api
             services.AddMvc();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            // Add any Autofac modules or registrations.
+            // This is called AFTER ConfigureServices so things you
+            // register here OVERRIDE things registered in ConfigureServices.
+            //
+            // You must have the call to AddAutofac in the Program.Main
+            // method or this won't be called.
+            builder.RegisterModule(new Module());
+        }
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
+            app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
-            
+            app.UseAuthentication();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
@@ -88,20 +93,8 @@ namespace Bank.Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
 
                 c.OAuthClientId("swaggerui");
-                c.OAuthClientSecret("");
-                c.OAuthRealm("");
                 c.OAuthAppName("Swagger UI");
-            });
-
-            //app.UseIdentityServerAuthentication (new IdentityServerAuthenticationOptions
-            //{
-            //    Authority = "http://localhost:5000",
-            //    RequireHttpsMetadata = false,
-
-            //    ApiName = "api1",
-            //});
-
-            app.UseAuthentication();
+            });           
 
             app.UseMvc();
         }

@@ -23,16 +23,19 @@ namespace Bank.Infrustructure
                         h.Password(busSettings.Password);
                     });
 
-                    cfg.ReceiveEndpoint(busSettings.QueueName, ec =>
+                    if (busSettings.ReceiveQueueName != null)
                     {
-                        ec.LoadFrom(context);
-                    });
+                        cfg.ReceiveEndpoint(busSettings.ReceiveQueueName, ec =>
+                        {
+                            ec.LoadFrom(context);
+                        });
+                    }                    
                 });
 
                 return busControl;
             })
-                .SingleInstance()
-                .As<IBusControl>();
+            .As<IBusControl>();
+
 
             builder.RegisterType<MessageBus>().SingleInstance().As<IMessageBus>();
         }

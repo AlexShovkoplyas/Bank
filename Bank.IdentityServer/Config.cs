@@ -1,4 +1,5 @@
-﻿using IdentityServer4.Models;
+﻿using IdentityServer4;
+using IdentityServer4.Models;
 using IdentityServer4.Test;
 using System;
 using System.Collections.Generic;
@@ -41,12 +42,22 @@ namespace Bank.IdentityServer
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
 
-                    RedirectUris = { "http://localhost:5001/swagger/o2c.html" },
-                    PostLogoutRedirectUris = { "http://localhost:5001/swagger/" },
+                    //RedirectUris = { "http://localhost:5001/swagger/o2c.html" },
+                    RedirectUris = { "http://localhost:5001/swagger/oauth2-redirect.html" },
 
+                    //RedirectUris =
+                    //{
+                    //    "http://localhost:5001/oauth2-redirect.html",
+                    //    "http://localhost:5001/o2c.html"
+                    //},
+
+                    //PostLogoutRedirectUris = { "http://localhost:5001/swagger/" },
+                    
                     AllowedScopes =
                     {
-                        "api1"
+                        "api1",
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile
                     }
                 }
             };
