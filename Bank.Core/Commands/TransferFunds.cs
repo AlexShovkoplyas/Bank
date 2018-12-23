@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Bank.Core.Commands
 {
-    public interface DebitAccount
+    public interface TransferFunds
     {
-        Guid AccountId { get; }
+        Guid AccountIdFrom { get; }
+        Guid AccountIdTo { get; }
         long Amount { get; }
     }
 }

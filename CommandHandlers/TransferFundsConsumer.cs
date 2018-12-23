@@ -10,20 +10,20 @@ using System.Threading.Tasks;
 
 namespace Bank.Consumers
 {
-    public class DebitAccountConsumer : IConsumer<DebitAccount>
+    public class TransferFundsConsumer : IConsumer<TransferFunds>
     {
         private readonly IRepository repository;
 
-        public DebitAccountConsumer(IRepository repository)
+        public TransferFundsConsumer(IRepository repository)
         {
             this.repository = repository;
         }
 
-        public async Task Consume(ConsumeContext<DebitAccount> context)
+        public async Task Consume(ConsumeContext<TransferFunds> context)
         {
-            var account = await repository.GetById<Account>(context.Message.AccountId.ToString());
-            account.Debit(context.Message.Amount);
-            await repository.SaveAsync(account, 0);
+            //var account = await repository.GetById<Account>(context.Message.AccountIdF.ToString());
+            //account.Debit(context.Message.Amount);
+            //await repository.SaveAsync(account, 0);
         }
     }
 }
