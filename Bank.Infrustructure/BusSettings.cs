@@ -6,9 +6,9 @@ namespace Bank.Infrustructure
 {
     public class BusSettings
     {
-        public Uri HostAddress { get; }
-        public string Username { get; }
-        public string Password { get; }
+        public string HostAddress { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
         //public string ReceiveQueueName { get; }
         //public string[] SendEndpoints { get; }
     }

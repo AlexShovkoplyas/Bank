@@ -36,6 +36,8 @@ namespace Bank.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(Configuration.GetSection("BusSettings").Get<BusSettings>());
+
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(c =>
                 {
@@ -72,12 +74,6 @@ namespace Bank.Api
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            // Add any Autofac modules or registrations.
-            // This is called AFTER ConfigureServices so things you
-            // register here OVERRIDE things registered in ConfigureServices.
-            //
-            // You must have the call to AddAutofac in the Program.Main
-            // method or this won't be called.
             builder.RegisterModule(new Module());
         }
 

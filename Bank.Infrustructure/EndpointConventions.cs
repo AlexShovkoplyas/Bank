@@ -3,17 +3,12 @@ using MassTransit;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static Bank.Core.Transporting.QueueNames;
 
-namespace Bank.Consumers
+namespace Bank.Infrustructure
 {
     class EndpointConventions
     {
-        private const string HOST_NAME = "rabbitmq://";
-        private const string ACCOUNT_QUEUE_NAME = "account";
-        private const string CREDIR_QUEUE_NAME = "credit";
-        private const string DEBIT_QUEUE_NAME = "debit";
-        //private const string ACCOUNT_QUEUE_NAME = "account";
-
         public void Map()
         {
             EndpointConvention.Map<CreateAccount>(new Uri(HOST_NAME + ACCOUNT_QUEUE_NAME));

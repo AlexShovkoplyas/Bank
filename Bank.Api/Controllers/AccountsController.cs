@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Bank.Core.Commands;
+using Bank.Core.Domain;
+using Bank.Core.Transporting;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,13 +14,13 @@ namespace Bank.Api.Controllers
     
     public class AccountsController : Controller
     {
-        //private readonly IMessageBus bus;
-        private readonly IPrinter printer;
+        private readonly ICommandBus bus;
+        //private readonly IPrinter printer;
 
-        public AccountsController(IPrinter printer)
+        public AccountsController(ICommandBus bus)
         {
-            this.printer = printer;
-            //this.bus = bus;
+            //this.printer = printer;
+            this.bus = bus;
         }
 
         /// <summary>
@@ -36,11 +39,12 @@ namespace Bank.Api.Controllers
         [Route("/create")]
         public void CreateAccount(string currency, int personId)
         {
-            //bus.SendAsync<CreateAccount>(new 
-            //{
-            //    PersonId = personId,
-            //    Currency = 1
-            //});
+            bus.Send<CreateAccount>(new
+            {
+                Id = Guid.NewGuid(),
+                PersonId = 1,
+                Currency = Currency.EUR
+            });
         }
 
         /// <summary>

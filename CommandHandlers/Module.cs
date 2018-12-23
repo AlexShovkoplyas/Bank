@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Bank.Infrustructure;
 using MassTransit;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,8 @@ namespace Bank.Consumers
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<EndpointsConfigurator>().As<IEndpointsConfigurator>().SingleInstance();
             builder.RegisterConsumers(Assembly.GetExecutingAssembly());
-
         }
     }
 }

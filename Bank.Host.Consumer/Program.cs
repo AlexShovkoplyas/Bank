@@ -1,4 +1,5 @@
-﻿using Bank.Core.Transporting;
+﻿using Autofac;
+using Bank.Core.Transporting;
 using System;
 
 namespace Bank.Host.Consumer
@@ -12,7 +13,7 @@ namespace Bank.Host.Consumer
             var container = new IocContainerBuilder().Build();
             using (var scope = container.BeginLifetimeScope())
             {
-                var service = scope.Resolve<IMessageBus>();
+                var service = scope.Resolve<IPublishBus>();
             }
         }
     }

@@ -27,7 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Bank.Core\Bank.Core.csproj" />
     <ProjectReference Include="..\Bank.Infrustructure\Bank.Infrustructure.csproj" />
+    <ProjectReference Include="..\CommandHandlers\Bank.Consumers.csproj" />
   </ItemGroup>
 
 </Project>

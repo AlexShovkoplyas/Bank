@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Bank.Api
 {
-    public class Module : Autofac.Module
+    internal class Module : Autofac.Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<Printer>().As<IPrinter>().InstancePerLifetimeScope();
+            builder.RegisterModule<Consumers.Module>();
+            builder.RegisterModule<Infrustructure.Module>();
         }
     }
 

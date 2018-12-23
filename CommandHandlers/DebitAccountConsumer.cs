@@ -1,7 +1,6 @@
 ﻿using Bank.Core.Commands;
 using Bank.Core.Domain;
 using Bank.Core.EventsAccount;
-using Bank.Domain;
 using MassTransit;
 using System;
 using System.Collections.Generic;
@@ -21,9 +20,9 @@ namespace Bank.Consumers
 
         public async Task Consume(ConsumeContext<DebitAccount> context)
         {
-            var account = await repository.GetById<Account>(context.Message.AccountId.ToString());
-            account.Debit(context.Message.Amount);
-            await repository.SaveAsync(account, 0);
+            //var account = await repository.GetById<Account>(context.Message.AccountId.ToString());
+            //account.Debit(context.Message.Amount);
+            //await repository.SaveAsync(account, 0);
         }
     }
 }

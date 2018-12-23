@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Bank.Core.Transporting;
 using MassTransit;
+using MassTransit.RabbitMqTransport;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,40 +12,15 @@ namespace Bank.Infrustructure
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register(context =>
-            {
-                var busSettings = context.Resolve<BusSettings>();
+            builder.RegisterType<BusFactory>().AsSelf().SingleInstance();
 
-                var busControl = Bus.Factory.CreateUsingRabbitMq(cfg =>
-                {
-                    var host = cfg.Host(busSettings.HostAddress, h =>
-                    {
-                        h.Username(busSettings.Username);
-                        h.Password(busSettings.Password);
-                    });
+            builder.Register(c => c.Resolve<BusFactory>().GetSender(c.Resolve<BusSettings>()))
+                .As<ISendEndpointProvider>().SingleInstance();
+            builder.Register(c => c.Resolve<BusFactory>().GetPublisher(c.Resolve<BusSettings>(), c.Resolve<IEndpointsConfigurator>(), c))
+                .As<IPublishEndpoint>().SingleInstance();
 
-                    //if (busSettings.ReceiveQueueName != null)
-                    //{
-                    //    cfg.ReceiveEndpoint(busSettings.ReceiveQueueName, ec =>
-                    //    {
-                    //        ec.LoadFrom(context);
-                    //    });
-                    //}        
-                    cfg.Consumer<UpdateCustomerConsumer>(context);
-                });
-
-                
-
-                busControl.Start();
-
-                busControl.
-                return busControl;
-            })
-            .As<IBusControl>();
-
-            builder.RegisterType<MessageBus>().SingleInstance().As<IMessageBus>();
+            builder.RegisterType<PublishBus>().SingleInstance().As<IPublishBus>();
             builder.RegisterType<CommandBus>().SingleInstance().As<ICommandBus>();
-            builder.RegisterType<CommandBusesFactory>().SingleInstance().As<CommandBusesFactory>();
         }
-    }
+    }    
 }

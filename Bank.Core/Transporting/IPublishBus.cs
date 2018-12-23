@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace Bank.Core.Transporting
 {
-    public interface ICommandBus
+    public interface IPublishBus
     {
-        void Send<TMessage>(object message) where TMessage : class;
+        void Publish<TMessage>(object message) where TMessage : class;
     }
 }

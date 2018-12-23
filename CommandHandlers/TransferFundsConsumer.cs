@@ -1,7 +1,6 @@
 ﻿using Bank.Core.Commands;
 using Bank.Core.Domain;
 using Bank.Core.EventsAccount;
-using Bank.Domain;
 using MassTransit;
 using System;
 using System.Collections.Generic;

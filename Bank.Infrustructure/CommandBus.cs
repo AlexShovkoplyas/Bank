@@ -9,16 +9,16 @@ namespace Bank.Infrustructure
 {
     class CommandBus : ICommandBus
     {
-        private readonly ISendEndpoint endpoint;
+        private readonly ISendEndpointProvider endpoint;
 
-        public CommandBus(ISendEndpoint endpoint)
+        public CommandBus(ISendEndpointProvider endpoint)
         {
             this.endpoint = endpoint;
         }
 
-        public void Send<TMessage>(TMessage message) where TMessage : class
+        public void Send<TMessage>(object message) where TMessage : class
         {
-            endpoint.Send(message);
+            endpoint.Send<TMessage>(message);
         }
     }
 }

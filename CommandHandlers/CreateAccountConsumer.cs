@@ -1,7 +1,6 @@
 ﻿using Bank.Core.Commands;
 using Bank.Core.Domain;
 using Bank.Core.EventsAccount;
-using Bank.Domain;
 using MassTransit;
 using System;
 using System.Collections.Generic;
@@ -19,11 +18,13 @@ namespace Bank.Consumers
             this.repository = repository;
         }
 
-        public async Task Consume(ConsumeContext<CreateAccount> context)
+        public Task Consume(ConsumeContext<CreateAccount> context)
         {
-            var person = new Person(context.Message.Id, "Alex", "AlexShovkoplyas@gmail.com");
-            var account = new Account(0, context.Message.Currency, person);
-            await repository.SaveAsync(account, 0);
+            Console.WriteLine("Hello from API!!!");
+            return Task.CompletedTask;
+            //var person = new Person(context.Message.Id, "Alex", "AlexShovkoplyas@gmail.com");
+            //var account = new Account(0, context.Message.Currency, person);
+            //await repository.SaveAsync(account, 0);
         }
     }
 }

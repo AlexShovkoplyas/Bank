@@ -10,12 +10,6 @@ namespace Bank.Host.Currencies
         {
             Console.WriteLine("Hello World!");
 
-            Console.CancelKeyPress += (sender, eventArgs) =>
-            {
-                eventArgs.Cancel = true;
-                _reset.Set();
-            };
-
             var manager = new CurrencyManager();
             manager.ProcessAsync();
 
