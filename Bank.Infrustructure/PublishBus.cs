@@ -16,9 +16,9 @@ namespace Bank.Infrustructure
             this.messageBus = messageBus;            
         }        
 
-        public void Publish<TMessage>(object message) where TMessage : class
+        public async Task Publish<TMessage>(object message) where TMessage : class
         {
-            messageBus.Publish<TMessage>(message);
+            await messageBus.Publish<TMessage>(message);
         }      
     }
 }

@@ -9,6 +9,6 @@ namespace Bank.Core.Commands
     {
         Guid Id { get; set; }
         int PersonId { get; set; }
-        Currency Currency { get; set; }
+        string Currency { get; set; }
     }
 }

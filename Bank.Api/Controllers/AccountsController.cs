@@ -43,7 +43,7 @@ namespace Bank.Api.Controllers
             {
                 Id = Guid.NewGuid(),
                 PersonId = 1,
-                Currency = Currency.EUR
+                Currency = currency
             });
         }
 
@@ -55,7 +55,8 @@ namespace Bank.Api.Controllers
         [Route("test")]
         public string SayHello()
         {
-            return printer.Print("Hello world!!!");
+            return "Hello world!!!";
+            //return printer.Print("Hello world!!!");
         }
 
         /// <summary>

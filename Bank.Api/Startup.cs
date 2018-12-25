@@ -36,7 +36,8 @@ namespace Bank.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(Configuration.GetSection("BusSettings").Get<BusSettings>());
+            var busSettings = Configuration.GetSection("BusSettings").Get<BusSettings>();
+            services.AddSingleton(busSettings);
 
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(c =>
@@ -74,6 +75,7 @@ namespace Bank.Api
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
+            //var busSettings = builder.Build().Resolve<BusSettings>();
             builder.RegisterModule(new Module());
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Bank.Core.Commands;
 using Bank.Core.Transporting;
 using MassTransit;
 
@@ -16,9 +17,12 @@ namespace Bank.Infrustructure
             this.endpoint = endpoint;
         }
 
-        public void Send<TMessage>(object message) where TMessage : class
+        public async Task Send<TMessage>(object message) where TMessage : class
         {
-            endpoint.Send<TMessage>(message);
+            //Uri uri;
+            //EndpointConvention.TryGetDestinationAddress<CreateAccount>(out Uri uri);
+
+            await endpoint.Send<TMessage>(message);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Bank.Consumers
     {
         public void Configure(IRabbitMqHost host, IRabbitMqBusFactoryConfigurator cfg, IComponentContext context)
         {
-            cfg.ReceiveEndpoint(HOST_NAME + ACCOUNT_QUEUE_NAME, ep =>
+            cfg.ReceiveEndpoint(ACCOUNT_QUEUE_NAME, ep =>
             {
                 ep.Consumer<CreateAccountConsumer>(context);
                 ep.Consumer<CreditAccountConsumer>(context);

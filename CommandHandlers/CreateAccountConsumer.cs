@@ -11,11 +11,11 @@ namespace Bank.Consumers
 {
     public class CreateAccountConsumer : IConsumer<CreateAccount>
     {
-        private readonly IRepository repository;
+        //private readonly IRepository repository;
 
         public CreateAccountConsumer(IRepository repository)
         {
-            this.repository = repository;
+            //this.repository = repository;
         }
 
         public Task Consume(ConsumeContext<CreateAccount> context)

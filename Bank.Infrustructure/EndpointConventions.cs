@@ -12,9 +12,9 @@ namespace Bank.Infrustructure
         public void Map()
         {
             EndpointConvention.Map<CreateAccount>(new Uri(HOST_NAME + ACCOUNT_QUEUE_NAME));
-            EndpointConvention.Map<CreditAccount>(new Uri(HOST_NAME + ACCOUNT_QUEUE_NAME));
-            EndpointConvention.Map<DebitAccount>(new Uri(HOST_NAME + ACCOUNT_QUEUE_NAME));
-            EndpointConvention.Map<TransferFunds>(new Uri(HOST_NAME + ACCOUNT_QUEUE_NAME));
+            //EndpointConvention.Map<CreditAccount>(new Uri(HOST_NAME + ACCOUNT_QUEUE_NAME));
+            //EndpointConvention.Map<DebitAccount>(new Uri(HOST_NAME + ACCOUNT_QUEUE_NAME));
+            //EndpointConvention.Map<TransferFunds>(new Uri(HOST_NAME + ACCOUNT_QUEUE_NAME));
         }
     }
 }
